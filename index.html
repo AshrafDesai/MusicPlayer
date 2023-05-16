@@ -1,72 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Music Player</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://kit.fontawesome.com/e28abd2795.js" crossorigin="anonymous"></script>
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="Style.css">
 </head>
 <body>
-<div class="container"><center>
-	<div class="music-player">
-	<nav>
-		<div class="circle">
-			<i class="fa-solid fa-angle-left"></i>
-		</div>
-		<div class="circle">
-			<div class="circle">
-			<i class="fa-solid fa-bars"></i>
-		</div>
-		</div>
-	</nav>
-	<img src="images.jpeg" class="song-img">
-	<h1>Despacito</h1>
-	<p>Luis Fonsi</p>
-	<audio controls id="song">
-		<source src="Kahani Suno 2.0 - Slowed and Reverbed - Kaifi Khalil - New World Track.mp3" type="audio/mpeg">
-	</audio>
-	<input type="range" value="0" id="progress">
-	<div class="controls">
-		<div><i class="fa-solid fa-backward"></i></div>
-		<div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
-		<div><i class="fa-solid fa-forward"></i></div>
+	<div class="main_div">
+		<div class="music_container">
+			<h2 id="title">LOTUS LANE</h2>
+			<h3 id="artist">The loyalist</h3>
+			<div class="img_container">
+				<img src="images/ashraf-1.jpeg" alt=""/>
+				
+
+			</div>
+			<audio src="music/ashraf-1.mp3"></audio>
+
+
+			<div class="music_controls">
+				<i class="fas fa-backward" id="prev" title="Previous"></i>
+				<i class="fas fa-play" id="play" title="Play"></i>
+				<i class="fas fa-forward" id="next" title="Next"></i>
+				
+			</div>
+
+		</div> 
+	</div>
+	<script>
+		const music = document.querySelector("audio");
+		const img = document.querySelector("img");
+		const play = document.getElementById("play");
+		const artist = document.getElementById("artist");
+		const title = document.getElementById("title");
+		const prev = document.getElementById("prev");
+		const next = document.getElementById("next");
+
+		const songs = [
+		{
+			name: "ashraf-1",
+			title: "LOTUS LANE",
+			artist: "loyalist",
+		},
+		{
+			name: "ashraf-2",
+			title: "kahani suno",
+			artist: "Arijit Singh",
+		},
+		{
+			name: "ashraf-3",
+			title: "Apna Bana le",
+			artist: "Atif"
+		}
+	    ];
+
+		let isPlaying = false;
+		//play function
+		const playMusic = () => {
+			isPlaying = true;
+			music.play();
+			play.classList.replace("fa-play", "fa-pause");
+			img.classList.add("anime");
+		};
+
+		//pause function
+		const pauseMusic = () => {
+			isPlaying = false;
+			music.pause();
+			play.classList.replace("fa-pause", "fa-play");
+			img.classList.remove("anime")
+		};
 		
-	</div>
-	</div>
-</div>
-</center>
-<script>
-	let progress = document.getElementById("progress");
-	let song = document.getElementById("song");
-	let ctrlIcon = document.getElementById("ctrlIcon");
+		play.addEventListener('click', () => {
+			if (isPlaying) {
+				pauseMusic();
+			} else {
+				playMusic();
+			}
+		});
 
-	song.onloadmetadata = function(){
-		progress.max = song.duration;
-		progress.value = song.currentTime;
-	}
-	function playPause() {
-		if(ctrlIcon.classList.contains("fa-pause")){
-			song.pause();
-			ctrlIcon.classList.remove("fa-pause");
-			ctrlIcon.classList.remove("fa-play");
-		}
-		else{
-			song.play();
-			ctrlIcon.classList.add("fa-pause");
-			ctrlIcon.classList.remove("fa-play");
-		}
-	}
-	if(song.play()){
-		songInterval(()=>{
-			progress.value = song.currentTime;
-		},500);
-	}
-	progress.onchange = function(){
-		song.play();
-		song.currentTime = progress.value;
-		ctrlIcon.classList.add("fa-pause");
-		ctrlIcon.classList.remove("fa-play")
-	}
+		//changing songs
 
-</script>
+
+		const loadSong = (song) => {
+			title.textContent = song.title;
+			artist.textContent = song.artist;
+			music.src = "music/" + song.name + ".mp3";
+			img.src = "images/" + song.name + ".jpeg";
+		};
+
+		let songIndex = 0;
+		
+		const nextSong = (songs) => {
+			songIndex = (songIndex + 1) % songs.length;
+			loadSong(songs[songIndex]);
+			playMusic();
+		};
+		const prevSong = (songs) => {
+			songIndex = (songIndex - 1 + songs.length) % songs.length;
+			loadSong(songs[songIndex]);
+			playMusic();
+		};
+
+		next.addEventListener("click", () => nextSong(songs));
+		prev.addEventListener("click", () => prevSong(songs));
+
+		
+	</script>
 </body>
 </html>
