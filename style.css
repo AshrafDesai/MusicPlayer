@@ -1,96 +1,115 @@
-.container {
-  background-color: #f2f2f2;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;1,100&display=swap');
+
+*,
+*:: before,
+*:: after {
+	margin: 0;
+	padding: 0%;
+	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+	font-family: "Jost", sans-serif;
 }
 
-.music-player {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+.main_div{
+	width: 100vw;
+	height: 100vh;
+	background-color: lightgrey;
+	display: grid;
+	background-image: url("/home/ashraf/Music Player/images/png-transparent-saavn-comparison-of-on-demand-music-streaming-services-internet-radio-android-angle-text-rectangle-thumbnail.png");
+	background-repeat: initial;
+	place-items: center;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.music_container{
+	width: 35rem;
+	height: 55rem;
+	background-color: white;
+	border-radius: 2rem;
+	box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
+	padding: 3rem;
+	text-align: center; 
+}
+.music_container {
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	word-spacing: 0.5rem;
+	color: black;
+	margin: 2rem 0 0.5rem 0;
+	font-size: 2.5rem;
+	font-weight: 500;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 
-nav .circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.music_container{
+	color: black;
+	text-transform: capitalize;
+	letter-spacing: 0.1rem;
+	font-size: 2rem;
+	margin-bottom: 4rem;
+	font-weight: 300;
 }
 
-nav .circle:hover {
-  cursor: pointer;
-  background-color: #ddd;
+.img_container{
+	width: 25rem;
+	height: 25rem;
+	margin: auto;
+
 }
 
-nav .circle i {
-  font-size: 20px;
+img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 
-.song-img {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+.music_controls {
+	width: 20rem;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	margin-top: 5rem;
 }
 
-h1 {
-  font-size: 24px;
-  margin: 0;
-  margin-bottom: 5px;
+.music_controls .fas{
+	color: #111111;
+	font-size: 2rem;
+	cursor: pointer;
+	filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4));
 }
 
-p {
-  font-size: 18px;
-  color: #666;
-  margin: 0;
-  margin-bottom: 20px;
+.music_controls .main_button {
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.4rem;	
+}
+.music_controls .fas:hover {
+	color: grey;
 }
 
-audio {
-  width: 100%;
+.music_controls .fa-play:hover {
+	background-color: #f6f6f6
+	color: #111;
+	box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.4);
 }
 
-input[type="range"] {
-  width: 100%;
-  height: 20px;
-  margin-bottom: 20px;
+.anime{
+	animation: rotatePlayer 3s linear infinite;
 }
 
-.controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 30px;
-}
-
-.controls div {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.controls div:hover {
-  cursor: pointer;
-  background-color: #ddd;
-}
-
-.controls div i {
-  font-size: 20px;
+@keyframes rotatePlayer{
+	from{ transform: rotate(0deg); 
+	}
+	to{
+		transform: rotate(360deg);
+	}
 }
