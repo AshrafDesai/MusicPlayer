@@ -2,7 +2,7 @@
 
 A basic audio player built with HTML, CSS, and JavaScript.
 
-## Overview
+# Overview
 
 This project provides a minimalistic audio player that you can easily integrate into your web pages. It includes play/pause functionality and a volume control slider.
 
