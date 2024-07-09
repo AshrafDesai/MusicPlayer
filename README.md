@@ -1,4 +1,4 @@
-![image](https://github.com/AshrafDesai/MusicPlayer/assets/132386307/31bd2e46-2565-4e7c-a440-d04cbece349e)
+![image](https://github.com/AshrafDesai/MusicPlayer/assets/132386307/b4015eb0-c1e5-47d0-a618-1fef044738bc)
 
 # Music Player
 
